@@ -25,6 +25,6 @@ export const updateProjectService = async (id, title, description, dueDate) => {
 }
 
 export const deleteProjectService = async (id) => {
-    const result = await pool.query("DELETE FROM project RETURNING *", [id]);
+    const result = await pool.query("DELETE FROM project WHERE id = $1 RETURNING *", [id]);
     return result.rows[0];
 }

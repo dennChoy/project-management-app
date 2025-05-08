@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 
 import errorHandling from './middelware/errorHandler.js';
 import projectRoutes from './routes/projectRoutes.js';
+import taskRoutes from './routes/taskRoutes.js';
 import {createProjectTable, createTaskTable} from './data/createProjectTable.js';
 
 dotenv.config();
@@ -17,12 +18,13 @@ app.use(cors());
 
 //Routes
 app.use("/api", projectRoutes);
+app.use("/api", taskRoutes);
 
 //Error handling middleware
 app.use(errorHandling);
 
-createProjectTable();
-createTaskTable();
+//createProjectTable();
+//createTaskTable();
 
 //Server running
 app.listen(port, () => {
